@@ -89,6 +89,7 @@ d3.json("data/mapChicago2.geojson", function(json) {
                         .classed("clicked1", true)
                         .style('stroke', '#1200b1')
                         .style('stroke-width', "4px");
+               
             var zipSelect1 = d.properties.zip;
 
             educationChart(zipSelect1, '#insurancePlot1');
@@ -1474,6 +1475,7 @@ d3.csv('data/UIC.csv', function (patientdata1){
         	.classed("clicked2", false)
         	.style('stroke', '#636363')
         	.style('stroke-width', "1px");
+
     };
 
         var dropdown = d3.select("#UICdropdown")
@@ -1517,7 +1519,7 @@ function getLink1(patientID1, container)
       {
         var survivalstatus = "Not Alive";
       }
-      else if(patientdata[i].death==undefined)
+      else if(patientdata[i].death==100)
       {
         var survivalstatus = "Survival Status not known";
       }
@@ -1529,6 +1531,10 @@ function getLink1(patientID1, container)
       else if(patientdata[i].gender==2)
       {
         var gender = "Female";
+      }
+      else if(patientdata[i].gender==100)
+      {
+        var gender = "Gender not known";
       }
 
       if(patientdata[i].ethnicity==1)
@@ -1555,6 +1561,10 @@ function getLink1(patientID1, container)
       {
         var race = "Others";
       }
+      else if(patientdata[i].ethnicity==100)
+      {
+        var race = "Ethnicity not known";
+      }
 
       if(patientdata[i].hpv_status==1)
       {
@@ -1572,6 +1582,11 @@ function getLink1(patientID1, container)
       {
         var hpv = "Non-contributory";
       }
+      else if(patientdata[i].hpv_status==100)
+      {
+        var hpv = "Not known";
+      }
+
 
       if(patientdata[i].t_stage_clinical==0)
       {
@@ -1601,6 +1616,10 @@ function getLink1(patientID1, container)
       {
         var tstatus = "T4";
       }
+      else if(patientdata[i].t_stage_clinical==100)
+      {
+        var tstatus = "T-category not known";
+      }
 
 
       if(patientdata[i].n_stage_clinical==1)
@@ -1624,6 +1643,10 @@ function getLink1(patientID1, container)
       {
         var nstatus = "Nx";
       }
+      else if(patientdata[i].n_stage_clinical==100)
+      {
+        var nstatus = "N-category not known";
+      }
 
       if(patientdata[i].definitive_concurrent_conc==0)
       {
@@ -1632,6 +1655,10 @@ function getLink1(patientID1, container)
       else if(patientdata[i].definitive_concurrent_conc==1)
       {
         var cc = "CC:YES";
+      }
+      else if(patientdata[i].definitive_concurrent_conc==100)
+      {
+        var cc = "CC:not known";
       }
 
       if(patientdata[i].xrt==0)
@@ -1642,6 +1669,10 @@ function getLink1(patientID1, container)
       {
         var xrt = "Radiation:YES";
       }
+      else if(patientdata[i].xrt==100)
+      {
+        var xrt = "Radiation:not known";
+      }
       
       if(patientdata[i].feeding==0)
       {
@@ -1651,8 +1682,10 @@ function getLink1(patientID1, container)
       {
         var feedingTube = "Feeding Tube:Y";
       }
-
-      console.log(patientdata[i].feeding);
+      else if(patientdata[i].feeding==100)
+      {
+        var feedingTube = "Feeding Tube:not known";
+      }
 
 
 
