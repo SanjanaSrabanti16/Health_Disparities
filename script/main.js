@@ -1109,7 +1109,9 @@ function cohortCompare(container) {
         .attr('width', $('#circleLegend').width())
         .attr('height',$('#circleLegend').height())
         .attr('class','circleLegend')
-        .attr("transform", "translate(20," + margin.top + ")")
+
+
+        circleLegend.attr("transform", "translate(10," + margin.top + ")")
         .selectAll("g")
         .data(value)
         .enter()
@@ -1122,13 +1124,42 @@ function cohortCompare(container) {
         
 
         // Add legend: segments
-    circleLegend.append("line")
-    .attr('x1', function(d){ return width - 75  } )
-    .attr('x2', width -60)
-    .attr('y1', function(d,i){ return 40 - size(d) -i*4 } )
-    .attr('y2', function(d,i){ return 40 - size(d) -i*4} )
-    .attr('stroke', 'black')
-    .style('stroke-dasharray', ('2,2'))
+    	circleLegend.selectAll("g")
+        .data(value)
+        .enter()
+    	.append("line")
+    	.attr("transform", "translate(20," + margin.top + ")")
+    	.attr('x1', function(d){ return width - 60 + size(d) } )
+    	.attr('x2', width -20)
+    	.attr('y1', function(d,i){ return 35 - size(d) -i*7 } )
+    	.attr('y2', function(d,i){ return 35 - size(d) -i*7} )
+    	.attr('stroke', 'black')
+    	.style('stroke-dasharray', ('2,2'))
+
+
+    	circleLegend.selectAll("g")
+  		.data(valuesToShow)
+  		.enter()
+  		.append("text")
+    	.attr('x', width +5)
+    	.attr('y', function(d,i){
+      		if (d==600)
+      			{
+        			return 36 - size(180) -i*4
+      			}
+      		else if (d==100)
+      			{
+        			return 40 - size(80) -i*4
+      			}
+      			else if (d==50)
+      			{
+        			return 45 - size(20) -i*4
+      			}
+      			 
+    		})
+    	.text( function(d){ return d } )
+    	.style("font-size", 12)
+    	.attr('alignment-baseline', 'middle')
 
     })//comparison file load
 
@@ -1241,7 +1272,7 @@ function zipHeading(zipSelect, container){
         .attr('y', "40%")
         .style("text-anchor", "middle")
         .text(function(d){
-            return "Zip: " + zipSelect;
+            return "Zip Code: " + zipSelect;
         });
 
 }
