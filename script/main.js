@@ -483,8 +483,10 @@ function raceChartUIC(zipSelect,container) {
                 .duration(200)
                 .style("opacity",0.9);
                 var raceTooltipValue = (d["y"] * (total/100)).toFixed(0);
+                var percentRace = ((raceTooltipValue*100)/448).toFixed(2);
+                console.log(percentRace);
 
-                tooltipRacePlot.html(d["component"] + " : " + raceTooltipValue )
+                tooltipRacePlot.html(d["component"] + " : " + raceTooltipValue + "<br>" + "Percentage : " + percentRace + "%" )
                 .style("left", (d3.event.pageX-30) + "px")
                 .style("top", (d3.event.pageY+18) + "px");
         })
@@ -629,7 +631,7 @@ function raceChartMDACC(zipSelect,container) {
             .attr("class", "tooltip")
             .style("opacity", 0);
 
-    yScale.domain([0, 100]).nice();
+    yScale.domain([0, 98]);
     xScale.domain(layers[0].map(function(d) { return d.x; }));
 
 
@@ -658,8 +660,9 @@ function raceChartMDACC(zipSelect,container) {
                 .duration(200)
                 .style("opacity",0.9);
                 var raceTooltipValue = (d["y"] * (total/100)).toFixed(0);
+                var percentRace = ((raceTooltipValue*100)/644).toFixed(2);
 
-                tooltipRacePlot.html(d["component"] + " : " + raceTooltipValue )
+                tooltipRacePlot.html(d["component"] + " : " + raceTooltipValue + "<br>" + "Percentage : " + percentRace + "%" )
                 .style("left", (d3.event.pageX-30) + "px")
                 .style("top", (d3.event.pageY+18) + "px");
         })
@@ -782,8 +785,9 @@ function genderChartUIC(zipSelect,container) {
                 .duration(200)
                 .style("opacity",0.9);
                 var genderTooltipValue = (d["y"] * (total/100)).toFixed(0);
+                var percentGender = ((genderTooltipValue*100)/448).toFixed(2);
 
-                tooltipgenderPlot.html(d["component"] + " : " + genderTooltipValue )
+                tooltipgenderPlot.html(d["component"] + " : " + genderTooltipValue + "<br>" + "Percentage : " + percentGender + "%")
                 .style("left", (d3.event.pageX-30) + "px")
                 .style("top", (d3.event.pageY+18) + "px");
         })
@@ -963,8 +967,9 @@ function genderChartMDACC(zipSelect,container) {
                 .duration(200)
                 .style("opacity",0.9);
                 var genderTooltipValue = (d["y"] * (total/100)).toFixed(0);
+                var percentGender = ((genderTooltipValue*100)/644).toFixed(2);
 
-                tooltipgenderPlot.html(d["component"] + " : " + genderTooltipValue )
+                tooltipgenderPlot.html(d["component"] + " : " + genderTooltipValue + "<br>" + "Percentage : " + percentGender + "%")
                 .style("left", (d3.event.pageX-30) + "px")
                 .style("top", (d3.event.pageY+18) + "px");
         })
@@ -1053,7 +1058,7 @@ function cohortCompare(container) {
                 tooltipcomarePlot.transition()
                         .duration(200)
                         .style("opacity",0.9);
-                tooltipcomarePlot.html("Total Patient: \n" + d + "<br>" )  
+                tooltipcomarePlot.html("Total Patient: \n" + d + "<br>" + "Percentage : " + ((d*100)/448).toFixed(2) + "%" )  
                         .style("left", (d3.event.pageX) + "px")   
                         .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -1237,7 +1242,7 @@ function cohortCompare2(container) {
                 tooltipcomarePlot.transition()
                         .duration(200)
                         .style("opacity",0.9);
-                tooltipcomarePlot.html("Total Patient: \n" + d + "<br>" )  
+                tooltipcomarePlot.html("Total Patient: \n" + d + "<br>" + "Percentage : " + ((d*100)/644).toFixed(2) + "%" )  
                         .style("left", (d3.event.pageX) + "px")   
                         .style("top", (d3.event.pageY - 28) + "px");
             })
